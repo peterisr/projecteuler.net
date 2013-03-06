@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <string>
 #include <utility>
+#include <bitset>
 
 #include <iostream>
 #include <sstream>

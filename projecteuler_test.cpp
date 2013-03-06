@@ -3,6 +3,10 @@
  */
 #include "projecteuler.h"
 
+////////////////////////////////////////////////////////////////////
+/// getPrimeFactors
+///////////////////////////////////////////////////////////////////
+
 template <class T>
 void assertGetPrimeFactors(T input, initializer_list< initializer_list<T> > expect) {
     vector< pair<T, UI> > result = getPrimeFactors(input);
@@ -62,11 +66,48 @@ void testGetPrimeFactors() {
     assertGetPrimeFactors(num1, {{(ULL)2,(ULL)55}});
 }
 
+
+
+////////////////////////////////////////////////////////////////////
+/// primeTester
+///////////////////////////////////////////////////////////////////
+
+void testPrimeTester() {
+    // Test small N
+    primeTester *PT1 = new primeTester(1);
+    assertFalse(PT1->isPrime(1), "PT N = 1, isPrime(1)");
+
+    // Test average N
+    primeTester *PT1000 = new primeTester(1000);
+    assertFalse(PT1000->isPrime(1), "PT N = 1000, isPrime(1)");
+    assertTrue(PT1000->isPrime(2), "PT N = 1000, isPrime(2)");
+    assertTrue(PT1000->isPrime(3), "PT N = 1000, isPrime(3)");
+    assertFalse(PT1000->isPrime(4), "PT N = 1000, isPrime(4)");
+    assertTrue(PT1000->isPrime(5), "PT N = 1000, isPrime(5)");
+    assertTrue(PT1000->isPrime(71), "PT N = 1000, isPrime(71)");
+    assertTrue(PT1000->isPrime(977), "PT N = 1000, isPrime(977)");
+    assertTrue(PT1000->isPrime(983), "PT N = 1000, isPrime(983)");
+    assertFalse(PT1000->isPrime(1000), "PT N = 1000, isPrime(1000)");
+
+    // Test prime N
+    primeTester *PT91 = new primeTester(97);
+    assertTrue(PT91->isPrime(97), "PT N = 97, isPrime(97)");
+
+    // Test prime N is square
+    primeTester *PT5041 = new primeTester(71 * 71);
+    assertTrue(PT5041->isPrime(977), "PT N = 5041, isPrime(977)");
+    assertTrue(PT5041->isPrime(983), "PT N = 5041, isPrime(983)");
+    assertFalse(PT5041->isPrime(5041), "PT N = 5041, isPrime(5041)");
+}
+
+
+
 /**
  * Run all "code" tests.
  */
 void suiteCode() {
     testGetPrimeFactors();
+    testPrimeTester();
 }
 
 int main() {
