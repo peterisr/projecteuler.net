@@ -8,10 +8,17 @@
  * manipulate the n-th bit.
  *
  * Used for saving memory.
+ *
+ * The *16 functions are specifically for Sieve of Eratosthenes
+ * to ignore even numbers and save some more memory.
  */
 #define GETBITINBYTEARRAY(array, n) (array[n / 8] & (((UC)1) << (n % 8)))
 #define SET0BITINBYTEARRAY(array, n) (array[n / 8] = (array[n / 8] & (~(((UC)1) << (n % 8)))))
 #define SET1BITINBYTEARRAY(array, n) (array[n / 8] = (array[n / 8] | (((UC)1) << (n % 8))))
+
+#define GETBITINBYTEARRAY16(array, n) (array[n / 16] & (((UC)1) << ((n / 2) % 8)))
+#define SET0BITINBYTEARRAY16(array, n) (array[n / 16] = (array[n / 16] & (~(((UC)1) << ((n / 2) % 8)))))
+#define SET1BITINBYTEARRAY16(array, n) (array[n / 16] = (array[n / 16] | (((UC)1) << ((n / 2) % 8))))
 
 /**
  * Get all distinct prime factors of a number,
@@ -64,6 +71,7 @@ vector < pair<T, UI> > getPrimeFactors(T number) {
  * in O(1) time if M <= N.
  *
  * Uses one bit of memory for each number <= N.
+ * Also, don't store even numbers.
  */
 class primeTester
 {
@@ -75,20 +83,20 @@ class primeTester
         primeTester(UI maxNumberToTest) {
             N = maxNumberToTest;
 
-            bytes = N / 8 + 2;
+            bytes = N / 16 + 2;
             isPrimeTable = new UC[bytes];
             for (UI i = 0; i < bytes; i++) {
                 isPrimeTable[i] = (UC)255;
             }
 
-            SET0BITINBYTEARRAY(isPrimeTable, 1);
-            for (UI i = 2; i * i <= N; i++) {
-                if (!GETBITINBYTEARRAY(isPrimeTable, i)) {
+            SET0BITINBYTEARRAY16(isPrimeTable, 1);
+            for (UI i = 3; i * i <= N; i += 2) {
+                if (!GETBITINBYTEARRAY16(isPrimeTable, i)) {
                     continue;
                 }
 
-                for (UI j = i + i; j <= N; j += i) {
-                    SET0BITINBYTEARRAY(isPrimeTable, j);
+                for (UI j = i + i + i; j <= N; j += i + i) {
+                    SET0BITINBYTEARRAY16(isPrimeTable, j);
                 }
             }
         }
@@ -98,7 +106,11 @@ class primeTester
         }
 
         bool isPrime(UI number) {
-            return GETBITINBYTEARRAY(isPrimeTable, number);
+            if (number % 2 == 0) {
+                return (number == 2);
+            } else {
+                return GETBITINBYTEARRAY16(isPrimeTable, number);
+            }
         }
 };
 
