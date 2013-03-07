@@ -114,4 +114,21 @@ class primeTester
         }
 };
 
+/**
+ * Get vector of all primes <= N.
+ */
+vector<UI> getPrimeList(UI N) {
+    primeTester PT(N);
+    vector<UI> result;
+
+    UI c = 0;
+    FORE(i,1,N) {
+        if (PT.isPrime(i)) {
+            result.push_back(i);
+        }
+    }
+
+    return result;
+}
+
 #endif // PROJECTEULER_CODE

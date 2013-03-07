@@ -101,6 +101,25 @@ void testPrimeTester() {
 }
 
 
+////////////////////////////////////////////////////////////////////
+/// getPrimeList
+///////////////////////////////////////////////////////////////////
+
+void testGetPrimeList() {
+    VUI list1 = getPrimeList(10);
+    assertTrue(list1[0] == 2);
+    assertTrue(list1[1] == 3);
+    assertTrue(list1[2] == 5);
+    assertTrue(list1[3] == 7);
+
+    VUI list2 = getPrimeList(100);
+    assertTrue(list2[4] == 11);
+    assertTrue(list2[5] == 13);
+    assertTrue(list2[6] == 17);
+    assertTrue(list2[7] == 19);
+}
+
+
 
 /**
  * Run all "code" tests.
@@ -108,6 +127,7 @@ void testPrimeTester() {
 void suiteCode() {
     testGetPrimeFactors();
     testPrimeTester();
+    testGetPrimeList();
 }
 
 int main() {
