@@ -117,6 +117,9 @@ void testGetPrimeList() {
     assertTrue(list2[5] == 13);
     assertTrue(list2[6] == 17);
     assertTrue(list2[7] == 19);
+
+    VUI list3 = getPrimeList(101);
+    assertTrue(list3[list3.size() - 1] == 101);
 }
 
 
