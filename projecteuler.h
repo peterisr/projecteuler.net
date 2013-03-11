@@ -45,11 +45,15 @@ typedef vector<UI> VUI;
 #define ABS(a) ((a) < 0 ? (-1*(a)) : (a))
 #define INSET(s, e) ((s).find(e) != (s).end())
 #define INMAP(s, e) ((s).find(e) != (s).end())
-#define TRACE(v) (cout << "TRACE("#v << "): " << v << endl)
+#define TRACE(v) (cout << "TRACE(" << #v << "): " << v << endl)
+#define TRACE1D(v,s) { cout << "TRACE1D(" << #v << ", " << (s) << "): "; F(i,s) cout << (v)[i] << " "; cout << endl; }
+#define TRACE2D(v,s1,s2) { cout << "TRACE2D(" << #v << ", " << (s1) << ", " << (s2) << "): "; F(i,s1) { cout << endl << "\t"; F(j,s2) cout << v[i][j] << " "; } cout << endl; }
+#define TRACE2DS(v) { cout << "TRACE2DS(" << #v << "): "; F(i,v.size()) { cout << endl << "\t"; F(j,v[i].size()) cout << v[i][j] << " "; } cout << endl; }
 #define FOREACH(it, s) for (auto it = s.begin(); it != s.end(); it++)
 
 //MY LIBS
 #include "projecteuler_testing.h"
 #include "projecteuler_code.h"
+#include "projecteuler_shared.h"
 
 #endif // PROJECTEULER
