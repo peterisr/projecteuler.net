@@ -40,7 +40,7 @@ UI pyramidMaximizePath(const vector<VI> &pyramid, UI lines) {
 }
 
 UI pyramidMaximizePathFromFile(const char *file, UI lines) {
-    ifstream in("input018.txt");
+    ifstream in(file);
 
     vector<VI> pyramid;
     pyramid.resize(lines);
