@@ -10,7 +10,7 @@
  * The use of "and" when writing out numbers is in compliance with British usage.
  *
  * @task 017
- * @answer
+ * @answer 21124
  */
 #include "../projecteuler.h"
 
