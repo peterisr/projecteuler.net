@@ -116,6 +116,8 @@ class primeTester
 
 /**
  * Get vector of all primes <= N.
+ * @param UI max number
+ * @return vector of UI
  */
 vector<UI> getPrimeList(UI N) {
     primeTester PT(N);
@@ -129,6 +131,20 @@ vector<UI> getPrimeList(UI N) {
     }
 
     return result;
+}
+
+
+
+/**
+ * Is the given year a leap year?
+ * @param UI year
+ * @return bool
+ */
+bool isLeapYear(UI year) {
+    return (
+        year % 4 == 0
+        && (year % 100 != 0 || year % 400 == 0)
+    );
 }
 
 #endif // PROJECTEULER_CODE

@@ -124,6 +124,19 @@ void testGetPrimeList() {
 
 
 
+////////////////////////////////////////////////////////////////////
+/// isLeapYear
+///////////////////////////////////////////////////////////////////
+
+void testIsLeapYear() {
+    assertTrue(isLeapYear(2012));
+    assertTrue(isLeapYear(1996));
+    assertTrue(isLeapYear(2000));
+    assertFalse(isLeapYear(1999));
+    assertFalse(isLeapYear(1900));
+}
+
+
 /**
  * Run all "code" tests.
  */
@@ -131,6 +144,7 @@ void suiteCode() {
     testGetPrimeFactors();
     testPrimeTester();
     testGetPrimeList();
+    testIsLeapYear();
 }
 
 int main() {
