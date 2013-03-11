@@ -137,6 +137,23 @@ void testIsLeapYear() {
 }
 
 
+
+////////////////////////////////////////////////////////////////////
+/// getDaysInMonth
+///////////////////////////////////////////////////////////////////
+
+void testGetDaysInMonth() {
+    assertTrue(getDaysInMonth(2013, 2) == 28);
+    assertTrue(getDaysInMonth(2013, 3) == 31);
+    assertTrue(getDaysInMonth(2013, 4) == 30);
+    assertTrue(getDaysInMonth(2013, 12) == 31);
+    assertTrue(getDaysInMonth(2000, 2) == 29);
+    assertTrue(getDaysInMonth(1999, 2) == 28);
+    assertTrue(getDaysInMonth(1996, 2) == 29);
+}
+
+
+
 /**
  * Run all "code" tests.
  */
@@ -145,6 +162,7 @@ void suiteCode() {
     testPrimeTester();
     testGetPrimeList();
     testIsLeapYear();
+    testGetDaysInMonth();
 }
 
 int main() {

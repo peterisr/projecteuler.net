@@ -147,4 +147,17 @@ bool isLeapYear(UI year) {
     );
 }
 
+/**
+ * Return # of days in month.
+ * @param UI year
+ * @param UI number of month 1..12
+ * @return UI
+ */
+UI getDaysInMonth(UI year, UI month) {
+    static UI monthDays[] = {
+        31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+    };
+    return (isLeapYear(year) && month == 2) ? 29 : monthDays[month - 1];
+}
+
 #endif // PROJECTEULER_CODE
