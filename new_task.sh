@@ -1,25 +1,31 @@
+
 #!/bin/sh
 if [ -z $1 ]; then 
 	echo "Input the task number.";
 	exit 1;
 fi
 
-FOLDER=$1
+TASKNUM=$1
 
-if [ ${#FOLDER} -lt 2 ]; then
-    FOLDER="0"$FOLDER;
+if [ ${#TASKNUM} -lt 2 ]; then
+    TASKNUM="0"$TASKNUM;
 fi;
 
-if [ ${#FOLDER} -lt 3 ]; then
-    FOLDER="0"$FOLDER;
+if [ ${#TASKNUM} -lt 3 ]; then
+    TASKNUM="0"$TASKNUM;
 fi;
+
+FOLDER=$TASKNUM
+FILE=$FOLDER".cpp"
 
 if [ -e $FOLDER ]; then
     echo "Task folder '$FOLDER' already exists.";
     exit 1;
 fi;
 
-FILE=$FOLDER".cpp"
+REPLACE="TASKNUMBER"
+TEMPLATE=$(cat template.cpp)
+TEMPLATE=${TEMPLATE//$REPLACE/$TASKNUM}
 
 mkdir $FOLDER
-cp template.cpp $FOLDER/$FILE
+echo "$TEMPLATE" > $FOLDER/$FILE

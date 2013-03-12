@@ -1,12 +1,16 @@
 /**
  *
  * 
- * @task 
+ * @task TASKNUMBER
  * @answer 
  */
 #include "../projecteuler.h"
 
-int main() {
+UI solveTASKNUMBER() {
     
+}
+
+int main() {
+    cout << solveTASKNUMBER();
     return 0;
 }
