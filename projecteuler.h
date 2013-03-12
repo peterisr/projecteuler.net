@@ -26,6 +26,10 @@
 #include <stdlib.h>
 #include <time.h>
 
+// GMP
+#include <cstdlib>
+#include <gmpxx.h>
+
 using namespace std;
 
 typedef long long LL;
