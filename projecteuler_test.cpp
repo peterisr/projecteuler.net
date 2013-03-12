@@ -168,6 +168,48 @@ void testGetAllDistinctDivisors() {
 }
 
 
+
+////////////////////////////////////////////////////////////////////
+/// moveToNextPermutation
+///////////////////////////////////////////////////////////////////
+
+void assertMoveToNextPermutation(string input, string expect) {
+    moveToNextPermutation(input);
+    if (input != expect) {
+        cout << "assertMoveToNextPermutation :: expect '" << expect << "'; got '" << input << "'" << endl;
+    }
+}
+
+void testMoveToNextPermutation() {
+    // 1
+    assertMoveToNextPermutation("1", "1");
+
+    // 1, 2
+    assertMoveToNextPermutation("12", "21");
+
+    // 1, 2, 3
+    assertMoveToNextPermutation("123", "132");
+    assertMoveToNextPermutation("132", "213");
+    assertMoveToNextPermutation("213", "231");
+    assertMoveToNextPermutation("231", "312");
+    assertMoveToNextPermutation("312", "321");
+    assertMoveToNextPermutation("321", "321");
+
+    // random
+    assertMoveToNextPermutation("0987654312", "0987654321");
+    assertMoveToNextPermutation("0987654321", "1023456789");
+    assertMoveToNextPermutation("05321", "10235");
+    assertMoveToNextPermutation("15320", "20135");
+
+    // letters
+    assertMoveToNextPermutation("ABCD", "ABDC");
+    assertMoveToNextPermutation("DCAB", "DCBA");
+
+    // check last permutation
+    string test("321");
+    assertFalse(moveToNextPermutation(test));
+}
+
 /**
  * Run all "code" tests.
  */
@@ -178,6 +220,7 @@ void suiteCode() {
     testIsLeapYear();
     testGetDaysInMonth();
     testGetAllDistinctDivisors();
+    testMoveToNextPermutation();
 }
 
 int main() {

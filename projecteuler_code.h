@@ -187,4 +187,42 @@ UI getDaysInMonth(UI year, UI month) {
     return (isLeapYear(year) && month == 2) ? 29 : monthDays[month - 1];
 }
 
+/**
+ * Get next permutation of string in lexicographic order.
+ * @param string & the permutation in it's current state.
+ * @param int length - length of permutation
+ * @return bool were we able to get the next permutation.
+ * False, when the current permutation is already the last.
+ * E.g. "9876543210".
+ */
+bool moveToNextPermutation(string &permutation) {
+    auto iter = permutation.end();
+    iter--;
+    int i = permutation.size() - 1;
+    while (i > 0 && permutation[i - 1] > permutation[i]) {
+        i--;
+        iter--;
+    }
+
+    if (i == 0) {
+        return false;
+    }
+
+    int minPos = i;
+    FOR(j,i,permutation.size()) {
+        if (permutation[j] > permutation[i - 1] && permutation[j] < permutation[minPos]) {
+            minPos = j;
+        }
+    }
+
+    swap(permutation[i - 1], permutation[minPos]);
+
+    //TRACE(i - 1);
+    //TRACE(minPos);
+
+    // sort reminder for minimal permutation
+    sort(iter, permutation.end());
+    return true;
+}
+
 #endif // PROJECTEULER_CODE
