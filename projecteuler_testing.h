@@ -24,4 +24,30 @@ void assertFalse(bool expression, const char *msg = NULL) {
     }
 }
 
+// Compare two vectors (or initializer_lists)
+template <class M, class N>
+void assertEquals(const M &a, const N &b, const char *msg = NULL) {
+    bool ok = false;
+    if (a.size() == b.size()) {
+        auto iterA = a.begin();
+        auto iterB = b.begin();
+        while (*iterA == *iterB) {
+            iterA++;
+            iterB++;
+        }
+
+        if (iterA == a.end()) {
+            ok = true;
+        }
+    }
+
+    if (!ok) {
+        if (msg != NULL) {
+            cout << "assertFalse :: Error :: " << msg << endl;
+        } else {
+            throw new exception();
+        }
+    }
+}
+
 #endif // PROJECTEULER_TESTING

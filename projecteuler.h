@@ -27,8 +27,8 @@
 #include <time.h>
 
 // GMP
-#include <cstdlib>
-#include <gmpxx.h>
+//#include <cstdlib>
+//#include <gmpxx.h>
 
 using namespace std;
 

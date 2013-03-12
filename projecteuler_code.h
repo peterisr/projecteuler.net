@@ -60,6 +60,33 @@ vector < pair<T, UI> > getPrimeFactors(T number) {
     return result;
 }
 
+
+/**
+ * Get all distinct divisors of given number N.
+ * Divisors are returned in ascending order.
+ *
+ * @param UI N
+ * @return vector of UI
+ */
+VI getAllDistinctDivisors(UI N) {
+    vector < pair<UI, UI> > primeFactors = getPrimeFactors(N);
+    VI result;
+    for (UI i = 1; i * i <= N; i++) {
+        if (N % i == 0) {
+            UI other = N / i;
+            if (other == i) {
+                result.push_back(other);
+            } else {
+                result.push_back(other);
+                result.push_back(i);
+            }
+        }
+    }
+
+    sort(result.begin(), result.end());
+    return result;
+}
+
 /**
  * Prime tester class. This class is useful if one needs to run
  * primality tests may times for numbers smaller than given N.

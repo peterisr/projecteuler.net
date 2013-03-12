@@ -154,6 +154,20 @@ void testGetDaysInMonth() {
 
 
 
+////////////////////////////////////////////////////////////////////
+/// getAllDistinctDivisors
+///////////////////////////////////////////////////////////////////
+
+void testGetAllDistinctDivisors() {
+    assertEquals(getAllDistinctDivisors(1), {1});
+    assertEquals(getAllDistinctDivisors(2), {1, 2});
+    assertEquals(getAllDistinctDivisors(3), {1, 3});
+    assertEquals(getAllDistinctDivisors(4), {1, 2, 4});
+    assertEquals(getAllDistinctDivisors(32), {1, 2, 4, 8, 16, 32});
+    assertEquals(getAllDistinctDivisors(40), {1, 2, 4, 5, 8, 10, 20, 40});
+}
+
+
 /**
  * Run all "code" tests.
  */
@@ -163,6 +177,7 @@ void suiteCode() {
     testGetPrimeList();
     testIsLeapYear();
     testGetDaysInMonth();
+    testGetAllDistinctDivisors();
 }
 
 int main() {
