@@ -225,4 +225,47 @@ bool moveToNextPermutation(string &permutation) {
     return true;
 }
 
+/**
+ * Get the n-th power of an integer.
+ * @param T base
+ * @param T power
+ * @return T
+ */
+template <class T>
+T pow(T base, T power) {
+    if (power == 0) {
+        return (T)1;
+    } else if (power == 1) {
+        return base;
+    }
+
+    T tmp = pow(base, power / 2);
+    tmp *= tmp;
+
+    if (power % 2 != 0) {
+        tmp *= base;
+    }
+
+    return tmp;
+}
+
+/**
+ * Get the sum of n-th powers of all number digits.
+ * @param T the number
+ * @param T power
+ * @return T
+ */
+template <class T>
+T sumOfDigitPowers(T number, T power) {
+    T result = 0;
+
+    while (number > 0) {
+        T digit = number % 10;
+        number /= 10;
+        result += pow(digit, power);
+    }
+
+    return result;
+}
+
 #endif // PROJECTEULER_CODE

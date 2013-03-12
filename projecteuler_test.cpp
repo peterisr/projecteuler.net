@@ -210,6 +210,61 @@ void testMoveToNextPermutation() {
     assertFalse(moveToNextPermutation(test));
 }
 
+
+
+////////////////////////////////////////////////////////////////////
+/// pow
+///////////////////////////////////////////////////////////////////
+
+void testPow() {
+    assertTrue(pow(0, 0) == 1);
+    assertTrue(pow(0, 1) == 0);
+    assertTrue(pow(0, 10) == 0);
+
+    assertTrue(pow(1, 0) == 1);
+    assertTrue(pow(2, 0) == 1);
+    assertTrue(pow(1000, 0) == 1);
+
+    assertTrue(pow(1, 1) == 1);
+    assertTrue(pow(5, 1) == 5);
+    assertTrue(pow(1010, 1) == 1010);
+
+    assertTrue(pow(1, 2) == 1);
+    assertTrue(pow(5, 2) == 5*5);
+    assertTrue(pow(1010, 2) == 1010*1010);
+
+    assertTrue(pow(1, 10000) == 1);
+    assertTrue(pow(2, 10) == 1024);
+    assertTrue(pow(2, 13) == 8192);
+
+    ULL res = (1ull << 63);
+    assertTrue(pow(2ull, 63ull) == res);
+}
+
+
+
+////////////////////////////////////////////////////////////////////
+/// sumOfDigitPowers
+///////////////////////////////////////////////////////////////////
+
+void testSumOfDigitPowers() {
+    assertTrue(sumOfDigitPowers(0, 0) == 0);
+    assertTrue(sumOfDigitPowers(0, 1) == 0);
+    assertTrue(sumOfDigitPowers(0, 10) == 0);
+    assertTrue(sumOfDigitPowers(10, 0) == 2);
+    assertTrue(sumOfDigitPowers(5000, 0) == 4);
+
+    assertTrue(sumOfDigitPowers(1, 2) == 1);
+    assertTrue(sumOfDigitPowers(2, 2) == 4);
+    assertTrue(sumOfDigitPowers(22, 2) == 8);
+    assertTrue(sumOfDigitPowers(222, 2) == 12);
+    assertTrue(sumOfDigitPowers(2222, 2) == 16);
+    assertTrue(sumOfDigitPowers(25, 3) == 133);
+}
+
+
+
+
 /**
  * Run all "code" tests.
  */
@@ -221,6 +276,8 @@ void suiteCode() {
     testGetDaysInMonth();
     testGetAllDistinctDivisors();
     testMoveToNextPermutation();
+    testPow();
+    testSumOfDigitPowers();
 }
 
 int main() {
