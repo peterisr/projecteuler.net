@@ -318,6 +318,32 @@ void testGetGCD() {
 
 
 
+////////////////////////////////////////////////////////////////////
+/// isPalindome
+///////////////////////////////////////////////////////////////////
+
+void testIsPalindome() {
+    assertTrue(isPalindome(1, 10));
+    assertTrue(isPalindome(33, 10));
+    assertTrue(isPalindome(101, 10));
+    assertTrue(isPalindome(1001, 10));
+    assertTrue(isPalindome(10101, 10));
+    assertTrue(isPalindome(50405, 10));
+
+    assertFalse(isPalindome(512415, 10));
+    assertFalse(isPalindome(45, 10));
+    assertFalse(isPalindome(54, 10));
+    assertFalse(isPalindome(9887, 10));
+    assertFalse(isPalindome(1000101, 10));
+
+    assertTrue(isPalindome(585, 2));
+    assertTrue(isPalindome(3, 2));
+    assertTrue(isPalindome(5, 2));
+    assertTrue(isPalindome(9, 2));
+}
+
+
+
 /**
  * Run all "code" tests.
  */
@@ -334,6 +360,7 @@ void suiteCode() {
     testGetDigitCount();
     testGetDigitMask();
     testGetGCD();
+    testIsPalindome();
 }
 
 int main() {

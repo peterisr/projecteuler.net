@@ -336,7 +336,27 @@ T getGCD(T a, T b) {
     }
 
     return a;
+}
 
+
+/**
+ * Check if given number (> 0) is a palindome in given base (> 1).
+ * @param T number
+ * @param T base
+ * @return true if is palindrome
+ */
+template <class T>
+bool isPalindome(T number, T base) {
+    T reverse = 0;
+
+    UI iter = number;
+    while (iter) {
+        reverse *= base;
+        reverse += iter % base;
+        iter /= base;
+    }
+
+    return (reverse == number);
 }
 
 
