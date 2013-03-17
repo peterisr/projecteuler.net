@@ -299,6 +299,25 @@ void testGetDigitMask() {
 }
 
 
+
+////////////////////////////////////////////////////////////////////
+/// getGCD
+///////////////////////////////////////////////////////////////////
+
+void testGetGCD() {
+    assertTrue(getGCD(1, 1) == 1);
+    assertTrue(getGCD(2, 2) == 2);
+    assertTrue(getGCD(3, 2) == 1);
+    assertTrue(getGCD(2, 3) == 1);
+    assertTrue(getGCD(16, 4) == 4);
+
+    assertTrue(getGCD(128, 32) == 32);
+    assertTrue(getGCD(7*5*3, 11*7*3) == 7*3);
+    assertTrue(getGCD((1ull << 62), 111111111111ull) == 1);
+}
+
+
+
 /**
  * Run all "code" tests.
  */
@@ -314,6 +333,7 @@ void suiteCode() {
     testSumOfDigitPowers();
     testGetDigitCount();
     testGetDigitMask();
+    testGetGCD();
 }
 
 int main() {

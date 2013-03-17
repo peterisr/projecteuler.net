@@ -313,4 +313,31 @@ UI getDigitMask(T number) {
     return mask;
 }
 
+/**
+ * Get the greatest common devisor of two integers.
+ * @param T first integer
+ * @param T second integer
+ * @return the greatest common devisor of both given integers
+ */
+template <class T>
+T getGCD(T a, T b) {
+    T tmp;
+
+    if (a < b) {
+        tmp = a;
+        a = b;
+        b = tmp;
+    }
+
+    while (b != 0) {
+        tmp = a % b;
+        a = b;
+        b = tmp;
+    }
+
+    return a;
+
+}
+
+
 #endif // PROJECTEULER_CODE
