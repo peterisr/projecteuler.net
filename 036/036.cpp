@@ -13,43 +13,10 @@
  */
 #include "../projecteuler.h"
 
-bool isPalindomicDecimal(UI number) {
-    VI digits;
-
-    while (number) {
-        digits.push_back(number % 10);
-        number /= 10;
-    }
-
-    UI l = 0, r = digits.size() - 1;
-    while (l < r && digits[l] == digits[r]) {
-        l++;
-        r--;
-    }
-
-    return (l >= r);
-}
-
-bool isPalindomicBinary(UI number) {
-    UI l = 23;
-
-    while (!(number & (1 << l))) {
-        l--;
-    }
-
-    UI r = 0;
-    while (l > r && !!(number & (1 << l)) == !!(number & (1 << r))) {
-        l--;
-        r++;
-    }
-
-    return (l <= r);
-}
-
 bool isDoublePalindomic(UI number) {
     return (
-        isPalindomicDecimal(number)
-        && isPalindomicBinary(number)
+        isPalindome(number, (UI)10)
+        && isPalindome(number, (UI)2)
     );
 }
 
@@ -58,7 +25,7 @@ ULL solve036() {
 
     FOR(i,1,1000 * 1000) {
         if (isDoublePalindomic(i)) {
-            TRACE(i);
+            //TRACE(i);
             sum += i;
         }
     }
