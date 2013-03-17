@@ -268,4 +268,49 @@ T sumOfDigitPowers(T number, T power) {
     return result;
 }
 
+/**
+ * Get the count of digits in number (base 10).
+ * @param T number
+ * @return UI digit count
+ */
+template <class T>
+UI getDigitCount(T number) {
+    if (number == 0) {
+        return 1;
+    }
+
+    UI count = 0;
+    while (number > 0) {
+        number /= 10;
+        count++;
+    }
+
+    return count;
+}
+
+/**
+ * Which digits are used in the given number?
+ * Returns a bitmask where bit 1 means that i-th
+ * digit is present in the number.
+ * Only 10 least-significant bits are used in the return value.
+ * @param T number
+ * @return UI mask
+ */
+template <class T>
+UI getDigitMask(T number) {
+    UI mask = 0;
+
+    if (number == 0) {
+        return 1;
+    }
+
+    while (number > 0) {
+        UI digit = number % 10;
+        number /= 10;
+        mask |= (1 << digit);
+    }
+
+    return mask;
+}
+
 #endif // PROJECTEULER_CODE

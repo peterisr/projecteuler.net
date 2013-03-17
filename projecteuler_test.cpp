@@ -264,6 +264,40 @@ void testSumOfDigitPowers() {
 
 
 
+////////////////////////////////////////////////////////////////////
+/// getDigitCount
+///////////////////////////////////////////////////////////////////
+
+void testGetDigitCount() {
+    assertTrue(getDigitCount(0) == 1);
+    assertTrue(getDigitCount(1) == 1);
+    assertTrue(getDigitCount(10) == 2);
+    assertTrue(getDigitCount(45) == 2);
+    assertTrue(getDigitCount(1000) == 4);
+    assertTrue(getDigitCount(1234567890ull) == 10);
+}
+
+
+
+////////////////////////////////////////////////////////////////////
+/// getDigitMask
+///////////////////////////////////////////////////////////////////
+
+void testGetDigitMask() {
+    assertTrue(getDigitMask(0) == 1);
+    assertTrue(getDigitMask(1) == 2);
+    assertTrue(getDigitMask(2) == 4);
+    assertTrue(getDigitMask(3) == 8);
+    assertTrue(getDigitMask(4) == 16);
+    assertTrue(getDigitMask(9) == 512);
+
+    assertTrue(getDigitMask(9999) == 512);
+    assertTrue(getDigitMask(1111) == 2);
+    assertTrue(getDigitMask(1230) == 15);
+    assertTrue(getDigitMask(230) == 13);
+    assertTrue(getDigitMask(1234567890ull) == 1023);
+}
+
 
 /**
  * Run all "code" tests.
@@ -278,6 +312,8 @@ void suiteCode() {
     testMoveToNextPermutation();
     testPow();
     testSumOfDigitPowers();
+    testGetDigitCount();
+    testGetDigitMask();
 }
 
 int main() {
