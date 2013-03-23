@@ -360,4 +360,26 @@ bool isPalindome(T number, T base) {
 }
 
 
+/**
+ * Split the number ito digits in a given base.
+ * @param T number
+ * @param UI base
+ * @return vector of UI
+ */
+template <class T>
+VUI getDigits(T number, UI base) {
+    VUI digits;
+    if (number == 0) {
+        digits.push_back(0);
+        return digits;
+    }
+
+    while (number) {
+        digits.insert(digits.begin(), number % base);
+        number /= base;
+    }
+
+    return digits;
+}
+
 #endif // PROJECTEULER_CODE

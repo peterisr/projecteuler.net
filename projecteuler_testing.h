@@ -31,7 +31,7 @@ void assertEquals(const M &a, const N &b, const char *msg = NULL) {
     if (a.size() == b.size()) {
         auto iterA = a.begin();
         auto iterB = b.begin();
-        while (*iterA == *iterB) {
+        while (iterA != a.end() && *iterA == *iterB) {
             iterA++;
             iterB++;
         }

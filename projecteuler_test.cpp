@@ -344,6 +344,33 @@ void testIsPalindome() {
 
 
 
+////////////////////////////////////////////////////////////////////
+/// getDigits
+///////////////////////////////////////////////////////////////////
+
+void testGetDigits() {
+    // base 10 tests
+    assertEquals(getDigits(0, 10), {0});
+    assertEquals(getDigits(7, 10), {7});
+    assertEquals(getDigits(7654, 10), {7,6,5,4});
+    assertEquals(
+        getDigits(1234567891000ull, 10),
+        {1,2,3,4,5,6,7,8,9,1,0,0,0}
+    );
+
+    // base 2 tests
+    assertEquals(getDigits(0, 2), {0});
+    assertEquals(getDigits(1, 2), {1});
+    assertEquals(getDigits(2, 2), {1,0});
+    assertEquals(getDigits(3, 2), {1,1});
+    assertEquals(getDigits(5, 2), {1,0,1});
+
+    // base 8 tests
+    assertEquals(getDigits(0777, 8), {7,7,7});
+    assertEquals(getDigits(0102, 8), {1,0,2});
+}
+
+
 /**
  * Run all "code" tests.
  */
@@ -361,6 +388,7 @@ void suiteCode() {
     testGetDigitMask();
     testGetGCD();
     testIsPalindome();
+    testGetDigits();
 }
 
 int main() {
