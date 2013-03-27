@@ -173,41 +173,70 @@ void testGetAllDistinctDivisors() {
 /// moveToNextPermutation
 ///////////////////////////////////////////////////////////////////
 
-void assertMoveToNextPermutation(string input, string expect) {
+void assertMoveToNextPermutationString(string input, string expect) {
     moveToNextPermutation(input);
     if (input != expect) {
-        cout << "assertMoveToNextPermutation :: expect '" << expect << "'; got '" << input << "'" << endl;
+        cout << "assertMoveToNextPermutationString :: expect '" << expect << "'; got '" << input << "'" << endl;
+    }
+}
+
+void assertMoveToNextPermutationVector(initializer_list<UI> input, initializer_list<UI> expect) {
+    vector<UI> inputV;
+    inputV.resize(input.size());
+    copy(input.begin(), input.end(), inputV.begin());
+
+    moveToNextPermutation(inputV);
+
+    vector<UI> expectV;
+    expectV.resize(expect.size());
+    copy(expect.begin(), expect.end(), expectV.begin());
+
+    F(i,inputV.size()) {
+        if (inputV[i] != expectV[i]) {
+            cout << "assertMoveToNextPermutationVector :: expect";
+            TRACE1D(expectV, expectV.size());
+            TRACE1D(inputV, inputV.size());
+            cout << endl;
+            return;
+        }
     }
 }
 
 void testMoveToNextPermutation() {
     // 1
-    assertMoveToNextPermutation("1", "1");
+    assertMoveToNextPermutationString("1", "1");
 
     // 1, 2
-    assertMoveToNextPermutation("12", "21");
+    assertMoveToNextPermutationString("12", "21");
 
     // 1, 2, 3
-    assertMoveToNextPermutation("123", "132");
-    assertMoveToNextPermutation("132", "213");
-    assertMoveToNextPermutation("213", "231");
-    assertMoveToNextPermutation("231", "312");
-    assertMoveToNextPermutation("312", "321");
-    assertMoveToNextPermutation("321", "321");
+    assertMoveToNextPermutationString("123", "132");
+    assertMoveToNextPermutationString("132", "213");
+    assertMoveToNextPermutationString("213", "231");
+    assertMoveToNextPermutationString("231", "312");
+    assertMoveToNextPermutationString("312", "321");
+    assertMoveToNextPermutationString("321", "321");
 
     // random
-    assertMoveToNextPermutation("0987654312", "0987654321");
-    assertMoveToNextPermutation("0987654321", "1023456789");
-    assertMoveToNextPermutation("05321", "10235");
-    assertMoveToNextPermutation("15320", "20135");
+    assertMoveToNextPermutationString("0987654312", "0987654321");
+    assertMoveToNextPermutationString("0987654321", "1023456789");
+    assertMoveToNextPermutationString("05321", "10235");
+    assertMoveToNextPermutationString("15320", "20135");
 
     // letters
-    assertMoveToNextPermutation("ABCD", "ABDC");
-    assertMoveToNextPermutation("DCAB", "DCBA");
+    assertMoveToNextPermutationString("ABCD", "ABDC");
+    assertMoveToNextPermutationString("DCAB", "DCBA");
 
     // check last permutation
     string test("321");
     assertFalse(moveToNextPermutation(test));
+
+
+    // vectors
+    assertMoveToNextPermutationVector({1,2}, {2,1});
+    assertMoveToNextPermutationVector({1,2,3,4}, {1,2,4,3});
+    assertMoveToNextPermutationVector({1,2,4,3}, {1,3,2,4});
+    assertMoveToNextPermutationVector({1,4,3,2}, {2,1,3,4});
 }
 
 

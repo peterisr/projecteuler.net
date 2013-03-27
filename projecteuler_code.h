@@ -195,7 +195,8 @@ UI getDaysInMonth(UI year, UI month) {
  * False, when the current permutation is already the last.
  * E.g. "9876543210".
  */
-bool moveToNextPermutation(string &permutation) {
+template <class T>
+bool moveToNextPermutation(T &permutation) {
     auto iter = permutation.end();
     iter--;
     int i = permutation.size() - 1;
