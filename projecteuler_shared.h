@@ -62,4 +62,32 @@ UI pyramidMaximizePathFromFile(const char *file, UI lines) {
     return result;
 }
 
+/**
+ * Split a list of words like this:
+ * "word1","word2","word3"
+ * into a vector of strings.
+ * @param string
+ * @return vector<string>
+ */
+vector<string> parseWordList(const string &raw) {
+    vector<string> result;
+
+    bool between = false;
+    string word;
+    F(i,raw.size()) {
+        if (raw[i] != '"' && between) {
+            word += raw[i];
+        }
+        if (raw[i] == '"') {
+            between = !between;
+            if (!between) {
+                result.push_back(word);
+                word.clear();
+            }
+        }
+    }
+
+    return result;
+}
+
 #endif

@@ -15,23 +15,7 @@
 #include "../projecteuler.h"
 
 vector<string> getSortedWordList(string raw) {
-    vector<string> result;
-
-    bool between = false;
-    string word;
-    F(i,raw.size()) {
-        if (raw[i] != '"' && between) {
-            word += raw[i];
-        }
-        if (raw[i] == '"') {
-            between = !between;
-            if (!between) {
-                result.push_back(word);
-                word.clear();
-            }
-        }
-    }
-
+    vector<string> result = parseWordList(raw);
     sort(result.begin(), result.end());
     return result;
 }
