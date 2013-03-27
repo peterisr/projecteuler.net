@@ -382,4 +382,62 @@ VUI getDigits(T number, UI base) {
     return digits;
 }
 
+/**
+ * Convert a string of digits into a ULL / UI.
+ * Useful together with, for example, moveToNextPermutation.
+ * @param string
+ * @return T
+ */
+ULL stringTo(const string &s) {
+    ULL result = 0;
+
+    if (s.size() == 0) {
+        return result;
+    }
+
+    UI i = 0;
+    if (s[0] == '-' || s[0] == '+') {
+        i++;
+    }
+
+    while (i < s.size()) {
+        result *= 10;
+        result += (s[i] - '0');
+        i++;
+    }
+
+    if (s[0] == '-') {
+        result *= -1;
+    }
+
+    return result;
+}
+
+/**
+ * Test wether a single number is / is not a prime.
+ * @param T the number
+ * @return bool
+ */
+template <class T>
+bool isPrime(T number) {
+    if (number == 2) {
+        return true;
+    }
+
+    if (number == 0 || number == 1 || number % 2 == 0) {
+        return false;
+    }
+
+    T iter = 3;
+    while (iter * iter <= number) {
+        if (number % iter == 0) {
+            return false;
+        }
+
+        iter += 2;
+    }
+
+    return true;
+}
+
 #endif // PROJECTEULER_CODE

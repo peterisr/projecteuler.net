@@ -370,6 +370,45 @@ void testGetDigits() {
     assertEquals(getDigits(0102, 8), {1,0,2});
 }
 
+////////////////////////////////////////////////////////////////////
+/// stringTo
+///////////////////////////////////////////////////////////////////
+
+void testStringTo() {
+    string lolz = "";
+    ULL a = stringTo(lolz);
+    assertTrue(stringTo("") == 0);
+    assertTrue(stringTo("0") == 0);
+    assertTrue(stringTo("1") == 1);
+    assertTrue(stringTo("+1") == 1);
+    assertTrue(stringTo("-1") == -1);
+    assertTrue(stringTo("987") == 987);
+    assertTrue(stringTo("+987") == +987);
+    assertTrue(stringTo("-987") == -987);
+    assertTrue(stringTo("1234567890") == 1234567890ull);
+    assertTrue(stringTo("123456789") == 123456789);
+    assertTrue(stringTo("987654321") == 987654321);
+}
+
+
+
+////////////////////////////////////////////////////////////////////
+/// isPrime
+///////////////////////////////////////////////////////////////////
+
+void testIsPrime() {
+    assertFalse(isPrime(0));
+    assertFalse(isPrime(1));
+    assertTrue(isPrime(2));
+    assertTrue(isPrime(3));
+    assertFalse(isPrime(4));
+    assertTrue(isPrime(5));
+    assertTrue(isPrime(101));
+    assertFalse(isPrime(101 * 29));
+    assertFalse(isPrime(1ull << 63));
+    assertFalse(isPrime(987654321));
+}
+
 
 /**
  * Run all "code" tests.
@@ -389,6 +428,8 @@ void suiteCode() {
     testGetGCD();
     testIsPalindome();
     testGetDigits();
+    testStringTo();
+    testIsPrime();
 }
 
 int main() {
