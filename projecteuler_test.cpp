@@ -217,7 +217,6 @@ void testMoveToNextPermutation() {
 ///////////////////////////////////////////////////////////////////
 
 void testPow() {
-    assertTrue(pow(0, 0) == 1);
     assertTrue(pow(0, 1) == 0);
     assertTrue(pow(0, 10) == 0);
 
@@ -239,6 +238,25 @@ void testPow() {
 
     ULL res = (1ull << 63);
     assertTrue(pow(2ull, 63ull) == res);
+}
+
+
+////////////////////////////////////////////////////////////////////
+/// pow with mod
+///////////////////////////////////////////////////////////////////
+
+void testPowWithMod() {
+    assertTrue(powWithMod(0, 1, 10) == 0);
+    assertTrue(powWithMod(0, 10, 10) == 0);
+
+    assertTrue(powWithMod(10, 10, 10) == 0);
+    assertTrue(powWithMod(100, 100, 10) == 0);
+    assertTrue(powWithMod(2, 10, 10) == 4);
+
+    assertTrue(powWithMod(3, 4, 10) == 1);
+    assertTrue(powWithMod(2, 1000, 10) == 6);
+    assertTrue(powWithMod(1000, 1000, 2) == 0);
+    assertTrue(powWithMod(1000, 1000, 5) == 0);
 }
 
 
@@ -422,6 +440,7 @@ void suiteCode() {
     testGetAllDistinctDivisors();
     testMoveToNextPermutation();
     testPow();
+    testPowWithMod();
     testSumOfDigitPowers();
     testGetDigitCount();
     testGetDigitMask();

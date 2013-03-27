@@ -250,6 +250,30 @@ T pow(T base, T power) {
 }
 
 /**
+ * Get the n-th power of an integer modulo M.
+ * @param T base
+ * @param T power
+ * @return T
+ */
+template <class T>
+T powWithMod(T base, T power, T M) {
+    if (power == 0) {
+        return (T)1;
+    } else if (power == 1) {
+        return base % M;
+    }
+
+    T tmp = powWithMod(base, power / 2, M);
+    tmp = (tmp * tmp) % M;
+
+    if (power % 2 != 0) {
+        tmp = (tmp * base) % M;
+    }
+
+    return tmp;
+}
+
+/**
  * Get the sum of n-th powers of all number digits.
  * @param T the number
  * @param T power
