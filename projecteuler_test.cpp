@@ -236,7 +236,18 @@ void testMoveToNextPermutation() {
     assertMoveToNextPermutationVector({1,2}, {2,1});
     assertMoveToNextPermutationVector({1,2,3,4}, {1,2,4,3});
     assertMoveToNextPermutationVector({1,2,4,3}, {1,3,2,4});
-    assertMoveToNextPermutationVector({1,4,3,2}, {2,1,3,4});
+
+
+    // Test permutations with equal elements
+    assertMoveToNextPermutationVector({1,1,1,2}, {1,1,2,1});
+    assertMoveToNextPermutationVector({1,1,2,1}, {1,2,1,1});
+    assertMoveToNextPermutationVector({1,2,1,1}, {2,1,1,1});
+    assertMoveToNextPermutationVector({2,1,1,1}, {2,1,1,1});
+    vector<UI> testV;
+    testV.push_back(2);
+    testV.push_back(1);
+    testV.push_back(1);
+    assertFalse(moveToNextPermutation(testV));
 }
 
 

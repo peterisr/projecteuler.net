@@ -200,7 +200,7 @@ bool moveToNextPermutation(T &permutation) {
     auto iter = permutation.end();
     iter--;
     int i = permutation.size() - 1;
-    while (i > 0 && permutation[i - 1] > permutation[i]) {
+    while (i > 0 && permutation[i - 1] >= permutation[i]) {
         i--;
         iter--;
     }
@@ -211,7 +211,7 @@ bool moveToNextPermutation(T &permutation) {
 
     int minPos = i;
     FOR(j,i,permutation.size()) {
-        if (permutation[j] > permutation[i - 1] && permutation[j] < permutation[minPos]) {
+        if (permutation[j] > permutation[i - 1] && permutation[j] <= permutation[minPos]) {
             minPos = j;
         }
     }
