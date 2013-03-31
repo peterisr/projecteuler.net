@@ -399,8 +399,8 @@ VUI getDigits(T number, UI base) {
         return digits;
     }
 
-    while (number) {
-        digits.insert(digits.begin(), number % base);
+    while (number > 0) {
+        digits.insert(digits.begin(), (ULL)(number % base));
         number /= base;
     }
 
