@@ -374,7 +374,7 @@ template <class T>
 bool isPalindome(T number, T base) {
     T reverse = 0;
 
-    UI iter = number;
+    T iter = number;
     while (iter) {
         reverse *= base;
         reverse += iter % base;
